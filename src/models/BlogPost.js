@@ -12,6 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       content: {
         type: DataTypes.STRING,
       },
+      userId: { 
+        type: DataTypes.INTEGER,
+      },
       published: {
         type: DataTypes.DATE,
       },
