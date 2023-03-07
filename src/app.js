@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const loginController = require('./controllers/login.controller');
+const validateLogin = require('./Midllewares/validateLogin');
 
 // ... 
 
@@ -11,7 +12,7 @@ app.use(bodyParser.json());
 app.get('/', (_request, response) => {
   response.send();
 });
-app.post('/login', loginController);
+app.post('/login', validateLogin, loginController);
 
 app.use(express.json());
 
