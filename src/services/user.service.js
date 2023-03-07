@@ -5,4 +5,13 @@ const getByUserEmail = async (email) => {
   return user;
 };
 
-module.exports = { getByUserEmail };
+const createUser = async (displayName, email, password, image) => {
+  try {
+    const newUser = await User.create({ displayName, email, password, image });
+    return newUser;
+  } catch (err) {
+    return { type: 'error', message: err.message };
+  }
+};
+
+module.exports = { getByUserEmail, createUser };
