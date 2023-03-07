@@ -1,13 +1,17 @@
+const bodyParser = require('body-parser');
 const express = require('express');
+const loginController = require('./controllers/login.controller');
 
 // ... 
 
 const app = express();
+app.use(bodyParser.json());
 
 // não remova ou mova esse endpoint
 app.get('/', (_request, response) => {
   response.send();
 });
+app.post('/login', loginController);
 
 app.use(express.json());
 
