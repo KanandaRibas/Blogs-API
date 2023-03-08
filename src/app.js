@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 const express = require('express');
+const { createCategory, getCategories } = require('./controllers/category.controller');
 const loginController = require('./controllers/login.controller');
 const userController = require('./controllers/user.controller');
 const validateToken = require('./Midllewares/auth/validateToken');
@@ -20,6 +21,9 @@ app.get('/', (_request, response) => {
 app.post('/login', validateLogin, loginController);
 app.post('/user', validateDisplayName, validateEmail, validatePassword, userController.createUser);
 app.get('/user', validateToken, userController.getUsers);
+app.get('/user/:id', validateToken, userController.getByUserId);
+app.post('/categories', validateToken, createCategory);
+app.get('/categories', validateToken, getCategories);
 
 app.use(express.json());
 

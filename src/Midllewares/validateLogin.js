@@ -7,7 +7,7 @@ if (!(email && password)) {
   return res.status(400).json({ message: 'Some required fields are missing' });
 }
 
-const user = await userServices.getByUserEmail(email);
+const user = await userServices.getUserByEmail(email);
 
 if (!user || user.password !== password) {
   return res.status(400).json({ message: 'Invalid fields' }); 

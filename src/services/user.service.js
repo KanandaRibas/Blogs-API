@@ -1,12 +1,23 @@
 const { User } = require('../models');
 
-const getByUserEmail = async (email) => {
+const getUserByEmail = async (email) => {
   const user = await User.findOne({ where: { email } });
   return user;
 };
 
-const getByUserId = async (id) => {
-  const user = await User.findOne({ where: { id } });
+const getUserLogin = async (id) => {
+  const user = await User.findOne({
+    attributes: { exclude: ['password'] },
+    where: { id },
+   });
+  return user;
+};
+
+const getUserById = async (id) => {
+  const user = await User.findOne({ 
+    where: { id },
+    attributes: { exclude: ['password'] },
+   });
   return user;
 };
 
@@ -26,4 +37,4 @@ const findAllUsers = async () => {
  return users;
 };
 
-module.exports = { getByUserEmail, getByUserId, createUser, findAllUsers };
+module.exports = { getUserByEmail, getUserById, getUserLogin, createUser, findAllUsers };

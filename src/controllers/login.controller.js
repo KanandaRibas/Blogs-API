@@ -7,7 +7,7 @@ const secret = process.env.JWT_SECRET || 'seusecretdetoken';
 module.exports = async (req, res) => {
 const { email } = req.body;
 
-const user = await userServices.getByUserEmail(email);
+const user = await userServices.getUserByEmail(email);
 
 const jwtConfig = {
   expiresIn: '7d',
