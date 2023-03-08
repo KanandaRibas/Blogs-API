@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const loginController = require('./controllers/login.controller');
 const userController = require('./controllers/user.controller');
+const validateToken = require('./Midllewares/auth/validateToken');
 const validateDisplayName = require('./Midllewares/user/validateDisplayName');
 const validateEmail = require('./Midllewares/user/validateEmail');
 const validatePassword = require('./Midllewares/user/validatePassword');
@@ -17,7 +18,8 @@ app.get('/', (_request, response) => {
   response.send();
 });
 app.post('/login', validateLogin, loginController);
-app.post('/user', validateDisplayName, validateEmail, validatePassword, userController);
+app.post('/user', validateDisplayName, validateEmail, validatePassword, userController.createUser);
+app.get('/user', validateToken, userController.getUsers);
 
 app.use(express.json());
 
