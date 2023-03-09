@@ -22,10 +22,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
       },
     },
-    {
-      tableName: 'blog_posts',
-      underscored: true,
-    }
+  {
+    timestamps: true,
+    createdAt: 'published',
+    updatedAt: 'updated',
+    tableName: 'blog_posts',
+    underscored: true,
+  }
   );
 
    BlogPost.associate = (models) => {
