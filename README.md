@@ -17,20 +17,43 @@ git clone git@github.com:KanandaRibas/Blogs-API.git
 cd Blogs-API
 ```
 
-3. Instale as dependências:
+3. Suba a aplicação com o docker-compose:
+```bash
+docker-compose up -d --build
+```
+
+4. Instale as dependências:
 ```bash
 npm install
 ```
 
-4. Execute o projeto com o Nodemon:
+<details><summary><strong>Comandos úteis</strong></summary>
+
+- Para inicializar o banco de dados com o Sequelize:
+```bash
+npm run prestart
+```
+
+- Para popular o banco de dados:
+```bash
+npm run seed
+```
+
+- Para acessar o banco de dados pelo terminal interativo do container blogs_api_db:
+```bash
+docker exec -it blogs_api_db bash
+```
+Em seguida, acessar o MySQL dentro do container(senha= password):
+```bash
+mysql -u root -p
+```
+
+- Para executar o projeto com o Nodemon:
 ```bash
 npm run debug
 ```
 
-Para executar o projeto com o docker-compose:
-```bash
-docker-compose up -d --build
-```
+</details>
 
 ### Tecnologias utilizadas:
 - [Node.js](https://nodejs.org/en/about)
